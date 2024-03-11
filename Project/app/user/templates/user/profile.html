@@ -1,0 +1,84 @@
+{% extends "bots.html" %}
+{% load static %}
+{% load carts_tags %}
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock  %}
+
+{% block content %}
+
+<div class="row">
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Профиль с данными пользователя -->
+            <div class="col-md-5">
+                <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                    <h3 class="text-center mb-4">Профиль пользователя</h3>
+                    <form action = "{% url "user:profile" %}" method = 'post' enctype = 'multipart/form-data'>
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12 mb-3 text-center">
+                                {% if user.image %}
+                                <img src="{{user.image.url}}"
+                                    alt="Аватар пользователя" class="img-fluid rounded-circle"
+                                    style="max-width: 150px;">
+                                <input type="file" class="form-control mt-3" id="id_image"
+                                    accept="image/*"
+                                    name = 'image'>
+                                {% else %}
+                                <img src="{% static "deps/images/baseavatar.jpg" %}"
+                                    alt="Аватар пользователя" class="img-fluid rounded-circle"
+                                    style="max-width: 150px;">
+                                <input type="file" class="form-control mt-3" id="id_avatar"
+                                    accept="image/*"
+                                    name = 'image'>
+                                {% endif %}
+                                
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="id_first_Name" class="form-label">Имя*</label>
+                                <input type="text" class="form-control" id="id_first_Name"
+                                    name ='first_Name'
+                                    placeholder="Введите ваше имя" 
+                                    required 
+                                >
+                                    
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="id_last_Name" class="form-label">Фамилия*</label>
+                                <input type="text" class="form-control" id="id_last_Name"
+                                    placeholder="Введите вашу фамилию"  
+                                    name ='last_Name'
+                                    required 
+                                >
+                                    
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="id_username" class="form-label">Имя пользователя*</label>
+                                <input type="text" class="form-control" id="id_username"
+                                    name = 'username'    
+                                    placeholder="Введите ваше имя пользователя" 
+                                    value="{{ form.username.value }}" 
+                                    required 
+                                >
+                                    {% if form.non_field_errors %}<p>{{form.non_field_errors}}<p>{% endif %}
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="id_email" class="form-label">Email*</label>
+                                <input type="email" class="form-control" id="id_email"
+                                    placeholder="Введите ваш email *youremail@example.com" value="{{ form.email.value }}"
+                                    required name = 'email'
+                                >
+                                    {% if form.non_field_errors %}<p>{{form.non_field_errors}}<p>{% endif %}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-dark">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+[
+    {
+        "model": "goods.product",
+        "pk": 4,
+        "fields": {
+            "name": "Лампа",
+            "slug": "lampa",
+            "description": "",
+            "img": "",
+            "price": "1.00",
+            "discount": "0.90",
+            "quantity": 40,
+            "category": 7
+        }
+    },
+    {
+        "model": "goods.product",
+        "pk": 5,
+        "fields": {
+            "name": "Стулья",
+            "slug": "stulya",
+            "description": "",
+            "img": "Photo/set_of_tea_table_and_three_chairs_zvsd6Kq.jpg",
+            "price": "150.00",
+            "discount": "15.00",
+            "quantity": 40,
+            "category": 8
+        }
+    },
+    {
+        "model": "goods.product",
+        "pk": 6,
+        "fields": {
+            "name": "Офисный стул",
+            "slug": "ofisnyj-stul",
+            "description": "",
+            "img": "Photo/office_chair_RgnikYq.jpg",
+            "price": "50.00",
+            "discount": "0.00",
+            "quantity": 150,
+            "category": 9
+        }
+    }
+]
